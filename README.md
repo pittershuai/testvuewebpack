@@ -1,3 +1,6 @@
+# 简介
+对慕课网项目进行总结分析，加注释。vue+webpack入门
+
 # test
 
 > A Vue.js project
