@@ -12,6 +12,7 @@
 
         <!--v-for直接对函数返回值进行循环-->
         <!--@del="deleteTodo"是监听Item子组件的事件当事件发生时调用相应的方法进行处理-->
+        <!--:todo="todo" 是个啥意思？动态绑定？-->
         <Item
             v-for="todo in filterTodos"
             :todo="todo"
@@ -51,12 +52,13 @@ export default {
     Item,
     Tabs
   },
-  // 当依赖的数据有变化时都会触发计算。
+  // 当依赖的数据（todos、filter）有变化时都会触发计算。
   computed: {
     filterTodos () {
       if (this.filter === 'all') {
         return this.todos
       }
+      // 这里只是写的简单点了，如果filter为completed，则filterCompleted为true，如果filter为active则filterCompleted为false
       const filterCompleted = this.filter === 'completed'
       return this.todos.filter(todo => todo.completed === filterCompleted)
     }

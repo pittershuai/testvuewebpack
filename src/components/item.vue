@@ -1,5 +1,9 @@
 <template>
-    <!--动态div-->
+    <!--动态div,此处指的是div动态绑定class，即div的class信息是变化的。
+    此处的变化体现在todo.completed上，那为啥他是变化的呢？因为下面使用了v-model进行了model-view的双向绑定（相当于监听，
+    当用户在前端view中进行修改的时候，譬如将某项选中（view），会导致todo.completed值得变化（model），然后div的class就变化了）。
+    此处的class 可以为 ['todo-item','completed'] 和  ['todo-item','']两种状态。主要是在下面的style中用到（改变字体颜色、画横线）
+    -->
     <div :class="['todo-item', todo.completed? 'completed': '']">
         <!--v-model做数据的双向绑定，具体的作用是啥？-->
         <input
@@ -46,6 +50,7 @@ export default {
             display block
             line-height 1.2
             transition color 0.4s
+          /**/
         &.completed
             label
                 color #d9d9d9
