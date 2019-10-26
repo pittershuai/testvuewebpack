@@ -20,17 +20,23 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
+  //webpack的执行路径，项目的根目录
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
+    //当存在多个Chunk的时候，Webpack 会为每个 Chunk取一个名称，可以根据 Chunk 的名称来区分输出的文件名。
+    //代码里的 [name] 代表用内置的 name 变量去替换[name]，这时你可以把它看作一个字符串模块函数， 每个要输出的 Chunk 都会通过这个函数去拼接出输出的文件名称。
+    //除了name还有其他内置变量：参考https://github.com/zxfjd3g/dive-into-webpack/blob/master/docs/2%E9%85%8D%E7%BD%AE/2-2Output.md
     filename: '[name].js',
+    //配置发布到线上资源的 URL 前缀，跟cdn、异步加载相关
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  //配置查找各个模块之间的依赖，默认采用标准，也可以自己定义
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -46,6 +52,7 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      //Babel 所做的事情是转换代码。通过 Loader 去接入 Babel
       {
         test: /\.js$/,
         loader: 'babel-loader',

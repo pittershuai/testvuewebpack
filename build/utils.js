@@ -1,6 +1,8 @@
+//Loader 加载了 CSS 文件
 'use strict'
 const path = require('path')
 const config = require('../config')
+// 使用plugin从 .js 文件中提取出来的 .css
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 

@@ -6,6 +6,7 @@ const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+//有了这个plugin我们就不用再用在html中加入标签这么傻的方式引入js文件了。
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -21,6 +22,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devtool: config.dev.devtool,
 
   // these devServer options should be customized in /config/index.js
+  //DevServer的相关配置
+  /**
+   DevServer介绍：
+   在实际开发中你可能会需要：
+   1.提供 HTTP 服务而不是使用本地文件预览；
+   2.监听文件的变化并自动刷新网页，做到实时预览；
+   3.支持 Source Map，以方便调试。
+
+   对于这些， Webpack 都为你考虑好了。Webpack 原生支持上述第2、3点内容，再结合官方提供的开发工具 DevServer 也可以很方便地做到第1点。
+   DevServer 会启动一个 HTTP 服务器用于服务网页请求，同时会帮助启动 Webpack ，并接收 Webpack 发出的文件更变信号，通过 WebSocket 协议自动刷新网页做到实时预览。
+   **/
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
@@ -44,6 +56,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     }
   },
+  //扩展webpack功能
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
@@ -53,8 +66,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+      filename: 'index.html',//输出的 HTML 的文件名称
+      template: 'index.html',//模板文件
       inject: true
     }),
     // copy custom static assets
