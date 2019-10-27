@@ -21,9 +21,18 @@ import App from './app.vue'
 import './assets/styles/style.styl'
 import './assets/styles/global.styl'
 
-const root = document.createElement('div') // 创建div节点
-document.body.appendChild(root) // 将div节点放在body中
+// todo 方式一：这种方式是通过自己创建div节点的方式，然后挂载到该节点上。
+// const root = document.createElement('div') // 创建div节点
+// document.body.appendChild(root) // 将div节点放在body中
+//
+// new Vue({
+//   render: (h) => h(App) // 得到渲染的内容
+// }).$mount(root) // 将模板挂载到div节点
 
-new Vue({
+// todo 方式二：通过模板方式,模板就是index.html,在配置文件webpack.dev.conf.js中对这个模板进行了引用。 这种挂载方式是将模板中的id为app的div替换掉
+const vue = new Vue({
+  el: '#app',
   render: (h) => h(App) // 得到渲染的内容
-}).$mount(root) // 将模板挂载到div节点
+})
+
+console.log(vue.$data)
