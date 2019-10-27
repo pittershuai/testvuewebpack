@@ -3,7 +3,9 @@
   <div id="app">
     <!--使用在js中声明的组件-->
     <Header></Header>
-    <Todo></Todo>
+    <!--<Todo></Todo>-->
+    <!--为了走路由-->
+    <router-view/>
     <Footer></Footer>
   </div>
 </template>
