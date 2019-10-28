@@ -35,6 +35,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
    **/
   devServer: {
     clientLogLevel: 'warning',
+    // 若不加该项，当用户刷新页面时会向后端发送url请求，而不是前端页面的跳转
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },

@@ -3,8 +3,13 @@
   <div id="app">
     <!--使用在js中声明的组件-->
     <Header></Header>
+    <div class="navi">
+      <router-link :to="{name: 'app'}">app</router-link>
+      <router-link to="/login">login</router-link>
+      <router-link to="/info">info</router-link>
+    </div>
     <!--<Todo></Todo>-->
-    <!--为了走路由-->
+    <!--为了走路由，此处使用一个router-view，相当于一个占位符。当路由匹配成功后就将组件放到这个占位符的地方-->
     <router-view/>
     <Footer></Footer>
   </div>
@@ -42,4 +47,10 @@ export default {
       background-color #999
       opacity 0.2
       z-index -1
+  .navi
+    width 100px
+    height 30px
+    margin 0 auto
+    background-color #999
+    box-shadow 0 0 5px #666
 </style>
