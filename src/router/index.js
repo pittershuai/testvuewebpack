@@ -14,7 +14,7 @@ export const constantRouterMap = [
     path: '/app',
     props: true,
     // props: (route) => ({ id: route.query.b }),
-    component: () => import(/* webpackChunkName: "todo-view" */ '../components/todo.vue'),
+    component: () => import(/* webpackChunkName: "todo-view" */ '../components/todo/todo.vue'),
     // component: Todo,
     // 路由命名，在路由跳转的时候用到
     name: 'app',

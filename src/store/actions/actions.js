@@ -1,3 +1,5 @@
+// 异步处理数据。同步的处理放到mutations中进行处理
+
 // // import model from '../../model/client-model'
 // import model from 'model'
 // import notify from '../../components/notification/function'

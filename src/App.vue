@@ -3,9 +3,9 @@
   <div id="app">
     <!--使用在js中声明的组件-->
     <Header></Header>
-    <p>{{name}}</p>
-    <p>{{fullName}}</p>
     <div class="navi">
+      <p>{{name}}</p>  // 直接使用data中数据
+      <p>{{fullName}}</p> // 直接调用computed中方法
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
       <router-link to="/info">info</router-link>
@@ -19,9 +19,9 @@
 
 <script>
 // 引入组件
-import Header from './components/header.vue'
-import Footer from './components/footer'
-import Todo from './components/todo.vue'
+import Header from './components/todo/header.vue'
+import Footer from './components/todo/footer'
+import Todo from './components/todo/todo.vue'
 
 export default {
   data () {
@@ -74,9 +74,9 @@ export default {
       background-color #999
       opacity 0.2
       z-index -1
-  .navi
+   .navi
     width 100px
-    height 30px
+    height 100px
     margin 0 auto
     background-color #999
     box-shadow 0 0 5px #666
