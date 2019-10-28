@@ -47,24 +47,26 @@ export const constantRouterMap = [
   }
 ]
 
-export default new Router({
-  routes: constantRouterMap,
-  mode: 'history', // 不写这个配置会出现hash路由，多了个#
-  // base: '/base/' // 在所有路径前面加一个base路径。
-  // 页面跳转后是否保存上一次页面浏览到的位置
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
+export default () => {
+  return new Router({
+    routes: constantRouterMap,
+    mode: 'history', // 不写这个配置会出现hash路由，多了个#
+    // base: '/base/' // 在所有路径前面加一个base路径。
+    // 页面跳转后是否保存上一次页面浏览到的位置
+    scrollBehavior (to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { x: 0, y: 0 }
+      }
     }
-  }
-  // 以下不经常使用
-  // fallback: true,
-  // parseQuery (query) {
-  //
-  // },
-  // stringifyQuery (obj) {
-  //
-  // }
-})
+    // 以下不经常使用
+    // fallback: true,
+    // parseQuery (query) {
+    //
+    // },
+    // stringifyQuery (obj) {
+    //
+    // }
+  })
+}

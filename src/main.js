@@ -21,7 +21,11 @@ import App from './app.vue'
 import './assets/styles/style.styl'
 import './assets/styles/global.styl'
 
-import router from './router'
+import createRouter from './router'
+import createStore from './store/store'
+
+const store = createStore()
+const router = createRouter()
 
 // todo 方式一：这种方式是通过自己创建div节点的方式，然后挂载到该节点上。
 // const root = document.createElement('div') // 创建div节点
@@ -35,6 +39,7 @@ import router from './router'
 new Vue({ //eslint-disable-line
   el: '#app',
   router,
+  store, // 注册在根上，子组件都能拿到
   render: (h) => h(App) // 得到渲染的内容
 })
 

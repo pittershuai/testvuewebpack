@@ -3,6 +3,8 @@
   <div id="app">
     <!--使用在js中声明的组件-->
     <Header></Header>
+    <p>{{name}}</p>
+    <p>{{fullName}}</p>
     <div class="navi">
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
@@ -22,11 +24,36 @@ import Footer from './components/footer'
 import Todo from './components/todo.vue'
 
 export default {
+  data () {
+    return {
+      name: 'sdf'
+    }
+  },
   // 声明使用组件，然后在template中就可以使用了
   components: {
     Header,
     Footer,
     Todo
+  },
+  mounted () {
+    // console.log(this.$store)
+    // let i = 1
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
+    // this.$store.state.count = 3
+    // setInterval(() => {
+    //   this.updateCount({
+    //     num: i++,
+    //     num2: 2
+    //   })
+    // }, 1000)
+  },
+  computed: {
+    fullName () {
+      return this.$store.getters.fullName
+    }
   }
 }
 </script>
